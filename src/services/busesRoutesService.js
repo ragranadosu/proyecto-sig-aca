@@ -5,6 +5,7 @@ service.getRoutes = async (names) => {
     try {
         const response = [];
         var route;
+
         for (var i = 0; i < names.length; i++) {
             try {
                 route = await axios.get(`https://io.hackerspace.sv/data/rutas/GeoJSON/${names[i]}`);
@@ -14,9 +15,7 @@ service.getRoutes = async (names) => {
             }
         }
 
-
         return response;
-        //console.log(response);
     } catch (e) {
         console.log(e);
     }

@@ -7,6 +7,7 @@ import RoutesService from '../../services/busesRoutesService'
 
 const MapView = () => {
     const [routes, setRoutes] = useState([]);
+    const [center, setCenter] = useState();
     const [loading, isLoading] = useState(true);
 
     useEffect(() => {
