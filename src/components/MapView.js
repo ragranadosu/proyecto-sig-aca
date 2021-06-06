@@ -31,7 +31,6 @@ const MapView = () => {
                     />
 
                     {routes.map((route) => {
-                        console.log(route.name);
                         return (
                             <GeoJSON key={route.name} data={route}/>
                         )
@@ -45,7 +44,7 @@ const MapView = () => {
                 </MapContainer>
                 :
                 <div>
-                    <a>cargando</a>
+                    <a>Cargando</a>
                 </div>
             }
         </div>
