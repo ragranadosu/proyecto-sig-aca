@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {MapContainer, TileLayer, Marker, Popup, GeoJSON} from 'react-leaflet'
 import Icon from '../IconMarker';
 import 'leaflet/dist/leaflet.css'
-import names from '../../data/RoutesNames';
+import Routes from '../../data/RoutesNames';
 import RoutesService from '../../services/busesRoutesService'
 
 const MapView = () => {
@@ -12,7 +12,7 @@ const MapView = () => {
 
     useEffect(() => {
 
-        RoutesService.getRoutes(names).then((response) => {
+        RoutesService.getRoutes(Routes.default).then((response) => {
             setRoutes(response);
         }).catch((e) => {
             console.log(e, "No se han podido cargar las rutas");
