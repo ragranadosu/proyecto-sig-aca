@@ -1,17 +1,23 @@
 const axios = require("axios").default;
 const service = {}
 
-service.getRoute = async () => {
-    try{
-        const response = await axios.get("https://io.hackerspace.sv/data/rutas/GeoJSON/AB000A0_RECORRIDO.GeoJSON", {
-            headers:{
-                'Access-Control-Allow-Origin' : '*',
-                'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+service.getRoutes = async (names) => {
+    try {
+        const response = [];
+        var route;
+        for (var i = 0; i < names.length; i++) {
+            try {
+                route = await axios.get(`https://io.hackerspace.sv/data/rutas/GeoJSON/${names[i]}`);
+                response.push(route.data);
+            } catch (e) {
+                console.log(`no se pudo esta ruta: ${names[i]}`);
             }
-        });
-        return response.data;
+        }
+
+
+        return response;
         //console.log(response);
-    }catch (e){
+    } catch (e) {
         console.log(e);
     }
 }
