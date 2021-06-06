@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {MapContainer, TileLayer, Marker, Popup, GeoJSON} from 'react-leaflet'
-import Icon from './IconMarker';
+import Icon from '../IconMarker';
 import 'leaflet/dist/leaflet.css'
-import names from '../data/RoutesNames';
-import RoutesService from '../services/busesRoutesService'
+import names from '../../data/RoutesNames';
+import RoutesService from '../../services/busesRoutesService'
 
 const MapView = () => {
     const [routes, setRoutes] = useState([]);

@@ -1,5 +1,5 @@
 import React from 'react';
-import IconSvg from '../assets/venue_location_icon.svg';
+import IconSvg from '../../assets/venue_location_icon.svg';
 import L from 'leaflet';
 
 const IconMarker = L.icon({
@@ -13,4 +13,4 @@ const IconMarker = L.icon({
     className: "Leaflet-vanue-icon"
 })
 
-export default IconMarker
+export default IconMarker;
