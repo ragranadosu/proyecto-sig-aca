@@ -16,11 +16,8 @@ const MapView = () => {
         }).catch((e) => {
             console.log(e, "No se han podido cargar las rutas");
         }).finally(() => {
-            console.log("fin");
             isLoading(false);
         })
-        //const nRoutes = await RoutesService.getRoute();
-
 
     }, []);
 
