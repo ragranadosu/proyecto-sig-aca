@@ -185,12 +185,8 @@ routes.all = [
     "MBAL1_S_RECORRIDO.GeoJSON"
 ]
 
-routes.default = ["AB000A0_RECORRIDO.GeoJSON",
-    "AB000B0_RECORRIDO.GeoJSON",
-    "AB001X0_RECORRIDO.GeoJSON",
-    "AB002A1_RECORRIDO.GeoJSON",
-    "AB002A2_RECORRIDO.GeoJSON",
-    "AB002B1_RECORRIDO.GeoJSON"
+routes.default = [
+    "MB044X0_RECORRIDO.GeoJSON",
 ]
 
 export default routes;

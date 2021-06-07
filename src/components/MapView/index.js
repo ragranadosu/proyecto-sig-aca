@@ -1,18 +1,34 @@
 import React, {useEffect, useState} from "react";
-import {MapContainer, TileLayer, Marker, Popup, GeoJSON} from 'react-leaflet'
+import {MapContainer, TileLayer, Marker, Popup, GeoJSON, useMap, useMapEvent} from 'react-leaflet'
 import Icon from '../IconMarker';
 import 'leaflet/dist/leaflet.css'
 import Routes from '../../data/RoutesNames';
-import RoutesService from '../../services/busesRoutesService'
+import RoutesService from '../../services/busesRoutesService';
 
-const MapView = () => {
+const MapUtil = () => {
+    const map = useMap();
+    console.log(map.getCenter());
+    return null;
+}
+
+const MapEvents = () => {
+    const map = useMapEvent({
+        click: () => {
+            console.log(map.getCenter());
+        }
+    })
+    return null;
+}
+
+const MapView = (props) => {
     const [routes, setRoutes] = useState([]);
-    const [center, setCenter] = useState();
+    const [center, setCenter] = useState([13.7153719325982, -89.19499397277833]);
     const [loading, isLoading] = useState(true);
 
     useEffect(() => {
+        const routes = props.rutas || Routes.default;
 
-        RoutesService.getRoutes(Routes.default).then((response) => {
+        RoutesService.getRoutes(routes).then((response) => {
             setRoutes(response);
         }).catch((e) => {
             console.log(e, "No se han podido cargar las rutas");
@@ -25,7 +41,9 @@ const MapView = () => {
     return (
         <div>
             {!loading ?
-                <MapContainer center={[13.6527, -88.8684]} zoom={11} scrollWheelZoom={true}>
+                <MapContainer center={props.center || (center)} zoom={13} scrollWheelZoom={true}>
+                    {/*<MapUtil/>*/}
+                    {/*<MapEvents/>*/}
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
