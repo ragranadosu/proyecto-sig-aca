@@ -1,10 +1,10 @@
-import './components/MapView'
+
 import './App.css';
-import MapView from "./components/MapView";
+import FullPage from './components/FullPage';
 
 function App() {
     return (
-        <MapView/>
+        <FullPage/>
     );
 }
 
