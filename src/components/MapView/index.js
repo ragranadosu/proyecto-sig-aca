@@ -41,7 +41,7 @@ const MapView = (props) => {
     return (
         <div>
             {!loading ?
-                <MapContainer center={props.center || (center)} zoom={13} scrollWheelZoom={true}>
+                <MapContainer center={props.center || (center)} zoom={13} scrollWheelZoom={false}>
                     {/*<MapUtil/>*/}
                     {/*<MapEvents/>*/}
                     <TileLayer
