@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {MapContainer, TileLayer, Marker, Popup, GeoJSON, useMap, useMapEvent} from 'react-leaflet'
+import color from 'randomcolor';
 import Icon from '../IconMarker';
 import 'leaflet/dist/leaflet.css'
 import Routes from '../../data/RoutesNames';
@@ -51,7 +52,7 @@ const MapView = (props) => {
 
                     {routes.map((route) => {
                         return (
-                            <GeoJSON key={route.name} data={route}/>
+                            <GeoJSON key={route.name} data={route} style={{color: color()}}/>
                         )
                     })}
 

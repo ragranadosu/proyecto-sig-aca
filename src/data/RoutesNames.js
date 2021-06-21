@@ -186,7 +186,12 @@ routes.all = [
 ]
 
 routes.default = [
-    "MB044X0_RECORRIDO.GeoJSON",
+    "AB020X0_RECORRIDO.GeoJSON",
+    "AB022X0_RECORRIDO.GeoJSON",
+    "AB023A0_RECORRIDO.GeoJSON",
+    "AB023B0_RECORRIDO.GeoJSON",
+    "AB024X0_RECORRIDO.GeoJSON",
+    "AB026X0_RECORRIDO.GeoJSON",
 ]
 
 export default routes;
