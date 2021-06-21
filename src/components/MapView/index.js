@@ -52,7 +52,15 @@ const MapView = (props) => {
 
                     {routes.map((route) => {
                         return (
-                            <GeoJSON key={route.name} data={route} style={{color: color()}}/>
+                            <GeoJSON
+                                key={route.name}
+                                data={route}
+                                style={{
+                                    color: color({
+                                    luminosity: 'dark'
+                                })}}
+                                attribution="&copy; credits due..."
+                            />
                         )
                     })}
 
