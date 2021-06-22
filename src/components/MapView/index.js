@@ -83,7 +83,7 @@ const MapView = (props) => {
                                 //attribution="&copy; credits due..."
                             >
                                 <Popup>
-                                    {route.name}
+                                    {`Ruta ${route.features[0].properties.NAME}`}
                                 </Popup>
                             </GeoJSON>
                         )
