@@ -18,7 +18,7 @@ const MapView = (props) => {
     const [center, setCenter] = useState([13.7153719325982, -89.19499397277833]);
     const [loading, isLoading] = useState(true);
     const [selectedRoute, setSelectedRoute] = useState(null);
-    const colors = [];
+    const [colors, setColors] = useState([]);
 
     const MapEvents = () => {
         const map = useMapEvent({
@@ -32,8 +32,18 @@ const MapView = (props) => {
 
     useEffect(() => {
         const routes = props.rutas || Routes.default;
-
+        const colorsArray = [];
         RoutesService.getRoutes(routes).then((response) => {
+
+            for (var i = 0; i < response.length; i++) {
+                colorsArray.push(
+                    color({
+                        luminosity: 'dark'
+                    })
+                );
+            }
+
+            setColors(colorsArray);
             setRoutes(response);
         }).catch((e) => {
             console.log(e, "No se han podido cargar las rutas");
@@ -56,21 +66,19 @@ const MapView = (props) => {
                     />
 
                     {routes.map((route, index) => {
-                        console.log(index == selectedRoute);
+
                         return (
                             <GeoJSON
                                 eventHandlers={{
                                     click: () => {
-                                        setSelectedRoute(index);
+                                        setSelectedRoute(route.name);
                                     },
                                 }}
                                 key={route.name}
                                 data={route}
                                 pathOptions={{
-                                    color: selectedRoute == index ? 'black' : color({
-                                        luminosity: 'dark'
-                                    }),
-                                    opacity: (selectedRoute != null && selectedRoute != index) ? 0.1 : 1
+                                    color: selectedRoute == route.name ? 'black' : colors[index],
+                                    opacity: (selectedRoute != null && selectedRoute != route.name) ? 0.1 : 1
                                 }}
                                 //attribution="&copy; credits due..."
                             >
