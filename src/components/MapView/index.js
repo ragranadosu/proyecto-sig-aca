@@ -15,6 +15,7 @@ import Icon from '../IconMarker';
 import 'leaflet/dist/leaflet.css'
 import Routes from '../../data/RoutesNames';
 import RoutesService from '../../services/busesRoutesService';
+import utils from '../../utils';
 
 /**
  *
@@ -50,8 +51,10 @@ const MapView = ({rutas, centerProp}) => {
     }
 
     useEffect(() => {
-        const routes = rutas || Routes.default;
+        var routes = rutas || Routes.default;
         const colorsArray = [];
+
+        //routes = utils.searchRoute("101");
 
         RoutesService.getRoutes(routes).then((response) => {
 
