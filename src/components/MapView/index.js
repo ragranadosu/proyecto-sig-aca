@@ -1,5 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {MapContainer, TileLayer, Marker, Popup, GeoJSON, ZoomControl, useMap, useMapEvent} from 'react-leaflet'
+import {
+    MapContainer,
+    TileLayer,
+    Marker,
+    Popup,
+    GeoJSON,
+    ZoomControl,
+    LayersControl,
+    useMap,
+    useMapEvent
+} from 'react-leaflet'
 import color from 'randomcolor';
 import Icon from '../IconMarker';
 import 'leaflet/dist/leaflet.css'
@@ -68,34 +78,40 @@ const MapView = ({rutas, centerProp}) => {
                     {/*<MapUtil/>*/}
                     {<MapEvents/>}
                     <ZoomControl position="bottomleft"/>
-                    <TileLayer
-                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
+                    <LayersControl collapsed={true}>
 
-                    {routes.map((route, index) => {
+                        <TileLayer
+                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
 
-                        return (
-                            <GeoJSON
-                                eventHandlers={{
-                                    click: () => {
-                                        setSelectedRoute(route.name);
-                                    },
-                                }}
-                                key={route.name}
-                                data={route}
-                                pathOptions={{
-                                    color: selectedRoute == route.name ? 'black' : colors[index],
-                                    opacity: (selectedRoute != null && selectedRoute != route.name) ? 0.2 : 1
-                                }}
-                                //attribution="&copy; credits due..."
-                            >
-                                <Popup>
-                                    {`Ruta ${route.features[0].properties.NAME}`}
-                                </Popup>
-                            </GeoJSON>
-                        )
-                    })}
+                        {routes.map((route, index) => {
+
+                            return (
+                                <LayersControl.Overlay checked name={`Ruta ${route.features[0].properties.NAME}`}>
+                                    <GeoJSON
+                                        eventHandlers={{
+                                            click: () => {
+                                                setSelectedRoute(route.name);
+                                            },
+                                        }}
+                                        key={route.name}
+                                        data={route}
+                                        pathOptions={{
+                                            color: selectedRoute == route.name ? 'black' : colors[index],
+                                            opacity: (selectedRoute != null && selectedRoute != route.name) ? 0.2 : 1
+                                        }}
+                                        //attribution="&copy; credits due..."
+                                    >
+                                        <Popup>
+                                            {`Ruta ${route.features[0].properties.NAME}`}
+                                        </Popup>
+                                    </GeoJSON>
+                                </LayersControl.Overlay>
+                            )
+                        })}
+
+                    </LayersControl>
 
                     {/*<Marker position={[13.6527, -88.8684]} icon={Icon}>
                         <Popup>
