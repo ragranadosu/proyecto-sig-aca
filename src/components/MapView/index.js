@@ -51,7 +51,8 @@ const MapView = ({rutas, centerProp}) => {
     }
 
     useEffect(() => {
-        var routes = rutas;
+        var routes = rutas.length > 0 ? rutas : Routes.default;
+        console.log("rutas" ,rutas);
         const colorsArray = [];
 
         //routes = utils.searchRoute("101");
@@ -72,7 +73,7 @@ const MapView = ({rutas, centerProp}) => {
             isLoading(false);
         })
 
-    }, []);
+    }, [rutas]);
 
     return (
         <div>
@@ -81,7 +82,7 @@ const MapView = ({rutas, centerProp}) => {
                     {/*<MapUtil/>*/}
                     {<MapEvents/>}
                     <ZoomControl position="bottomleft"/>
-                    <LayersControl collapsed={true}>
+                    <LayersControl position="bottomleft" collapsed={true}>
 
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
