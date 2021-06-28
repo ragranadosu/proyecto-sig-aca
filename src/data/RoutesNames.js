@@ -193,7 +193,6 @@ routes.default = [
   'MB101B0_RECORRIDO.GeoJSON',
   'MB042B0_RECORRIDO.GeoJSON',
   'AB101B1_RECORRIDO.GeoJSON',
-  'AB101B2_RECORRIDO.GeoJSON',
 ];
 
 export default routes;
