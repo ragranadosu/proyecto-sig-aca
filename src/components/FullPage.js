@@ -5,7 +5,6 @@ import '../index.css';
 
 import ReactFullpage from '@fullpage/react-fullpage';
 import {Search} from './Search';
-
 import {useState} from 'react';
 
 const SEL = 'custom-section';
@@ -31,10 +30,10 @@ const Menu = () => (
 );
 
 const FullPage = () => {
-  const [input, setInput] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = (newSearch) => {
-    setInput(newSearch);
+    setSearchQuery(newSearch);
   };
 
   return (
@@ -67,8 +66,10 @@ const FullPage = () => {
                     Buscador de rutas de buses en El Salvador 🚌
                   </h1>
 
-                  <Search input={input} handleSearch={handleSearch} />
-                  
+                  <Search
+                    handleSearch={handleSearch}
+                    filteredRoute={searchQuery}
+                  />
                 </div>
               </div>
               <div className="section 2">
