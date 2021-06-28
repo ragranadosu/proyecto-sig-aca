@@ -5,9 +5,15 @@ import Routes from '../../data/RoutesNames';
 import SearchIcon from '../../assets/search-icon.svg';
 import './search.css';
 
-export const Search = ({handleSearch, filteredRoute}) => {
+export const Search = ({handleSearch, filteredRoute, handleClickItem}) => {
   const onChange = (e) => {
     handleSearch(e.target.value);
+  };
+
+  const onClickRoute = (event, route) => {
+    event.preventDefault();
+    event.stopPropagation();
+    handleClickItem(route);
   };
 
   const routes = Routes.all;
@@ -37,13 +43,17 @@ export const Search = ({handleSearch, filteredRoute}) => {
       {/* Suggestions depends of the search query */}
 
       {filteredRoute !== '' && (
-        <div className="search-suggestions">
-          <ul>
-            {listItems.map((item, key) => (
-              <li key={key}>{item.name}</li>
-            ))}
-          </ul>
-        </div>
+        <ul className="search-suggestions">
+          {listItems.map((item, key) => (
+            <li
+              onClick={(e) => onClickRoute(e, item.route)}
+              className="search-item"
+              key={key}
+            >
+              {item.name}
+            </li>
+          ))}
+        </ul>
       )}
     </>
   );

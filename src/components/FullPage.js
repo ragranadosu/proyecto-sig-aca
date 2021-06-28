@@ -31,10 +31,15 @@ const Menu = () => (
 
 const FullPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [routeSelected, setRouteSelected] = useState([])
 
   const handleSearch = (newSearch) => {
     setSearchQuery(newSearch);
   };
+
+  const handleClickItem = (item) => {
+    setRouteSelected([item])
+  }
 
   return (
     <div class="App">
@@ -69,13 +74,14 @@ const FullPage = () => {
                   <Search
                     handleSearch={handleSearch}
                     filteredRoute={searchQuery}
+                    handleClickItem={handleClickItem}
                   />
                 </div>
               </div>
               <div className="section 2">
                 <div class="slide">
                   {' '}
-                  <MapView />
+                  <MapView rutas={routeSelected}/>
                 </div>
                 <div class="slide"> Slide 2 </div>
               </div>

@@ -51,7 +51,7 @@ const MapView = ({rutas, centerProp}) => {
     }
 
     useEffect(() => {
-        var routes = rutas || Routes.default;
+        var routes = rutas;
         const colorsArray = [];
 
         //routes = utils.searchRoute("101");
