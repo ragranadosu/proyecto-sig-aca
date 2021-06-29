@@ -16,6 +16,7 @@ import 'leaflet/dist/leaflet.css'
 import Routes from '../../data/RoutesNames';
 import RoutesService from '../../services/busesRoutesService';
 import utils from '../../utils';
+import {popup} from "leaflet/dist/leaflet-src.esm";
 
 /**
  *
@@ -49,6 +50,10 @@ const MapView = ({rutas, centerProp}) => {
 
         return null;
     }
+
+    /*const PopUp = (route) => {
+        return A pretty CSS3 popup. <br/> Easily customizable.""
+    }*/
 
     useEffect(() => {
         var routes = rutas.length > 0 ? rutas : Routes.default;
@@ -108,7 +113,15 @@ const MapView = ({rutas, centerProp}) => {
                                         //attribution="&copy; credits due..."
                                     >
                                         <Popup>
-                                            {`Ruta ${route.features[0].properties.NAME}`}
+                                            {`Ruta ${route.features[0].properties.NAME}`} <br/>
+                                            <br/>
+                                            Horarios semanales: <br/>
+                                            {`Inicio: ${route.features[0].properties.H_INIC_LV}` } <br/>
+                                            {`Final: ${route.features[0].properties.H_FIN_LV}` } <br/>
+                                            <br/>
+                                            Horario fin de semana: <br/>
+                                            {`Inicio: ${route.features[0].properties.H_INIC_SD}` } <br/>
+                                            {`Final: ${route.features[0].properties.H_FIN_SD}` } <br/>
                                         </Popup>
                                     </GeoJSON>
                                 </LayersControl.Overlay>
