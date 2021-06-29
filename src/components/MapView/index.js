@@ -115,7 +115,7 @@ const MapView = ({rutas, centerProp}) => {
                                         <Popup>
                                             {`Ruta ${route.features[0].properties.NAME}`} <br/>
                                             <br/>
-                                            Horarios semanales: <br/>
+                                            Horario semanal: <br/>
                                             {`Inicio: ${route.features[0].properties.H_INIC_LV}` } <br/>
                                             {`Final: ${route.features[0].properties.H_FIN_LV}` } <br/>
                                             <br/>
