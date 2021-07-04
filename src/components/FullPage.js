@@ -8,8 +8,10 @@ import '../assets/css/default.css';
 import '../assets/js/main.js';
 import bus from '../assets/img/bus4.png';
 import ReactFullpage from '@fullpage/react-fullpage';
+import RoutesLists from './RoutesList';
 import {Search} from './Search';
 import {useState} from 'react';
+import data from '../data/RoutesNames';
 
 const SEL = 'custom-section';
 const SECTION_SEL = `.${SEL}`;
@@ -101,12 +103,12 @@ const FullPage = () => {
         scrollHorizontally={true}
         navigation={false}
         render={({state, fullpageApi}) => {
-          
+
           const handleClickItem = (item) => {
             setRouteSelected([item]);
             fullpageApi.moveSectionDown()
           };
-          
+
           return (
             <ReactFullpage.Wrapper>
               <div className="section 1 home">
@@ -138,7 +140,7 @@ const FullPage = () => {
                   <MapView rutas={routeSelected}/>
                 </div>
                 <div className="slide">
-                
+                    <RoutesLists routesBuses={data.buses} routesMicrobuses={data.microbuses}/>
                 </div>
               </div>
               <div className="section 3">
