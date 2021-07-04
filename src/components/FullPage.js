@@ -138,7 +138,7 @@ const FullPage = () => {
                   <MapView rutas={routeSelected}/>
                 </div>
                 <div className="slide">
-             
+                
                 </div>
               </div>
               <div className="section 3">
