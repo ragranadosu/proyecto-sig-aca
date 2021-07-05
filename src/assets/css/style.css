@@ -124,6 +124,74 @@ p {
 .slick-slide {
   outline: 0; }
 
+
+/* lista de rutas */
+/* List */
+ul {
+  counter-reset: index;  
+  padding: 0;
+  max-width: 300px;
+}
+
+/* List element */
+.list {
+  counter-increment: index; 
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  box-sizing: border-box;
+  transition: background-color .5s;
+}
+
+.list:hover {
+  background-color: #006f6f;
+  color: #fff;
+}
+/* Element counter */
+.list::before {
+  content: counters(index, ".", decimal-leading-zero);
+  font-size: 1.5rem;
+  text-align: right;
+  font-weight: bold;
+  min-width: 50px;
+  padding-right: 12px;
+  font-variant-numeric: tabular-nums;
+  align-self: flex-start;
+  background-image: linear-gradient(to bottom, #fec401, #fec401);
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Element separation */
+.list + li {
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.listab{
+  display: flex;
+  max-height: 70%;
+  justify-content: start;
+  padding-left:5%;
+
+ 
+}
+.listaA{
+  padding-left: 5%;
+  max-height: 70%;
+}
+
+.scroll{
+ 
+  overflow-y: scroll;
+  max-height: 100%;
+  scrollbar-width: auto;          /* "auto" or "thin" */
+  scrollbar-color: #fec401 #70c8db;   /* scroll thumb and track */
+}
+
+
+
 /*===== All Section Title Style =====*/
 .section-title .title {
   font-size: 44px;

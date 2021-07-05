@@ -13,20 +13,23 @@ import color from "randomcolor";
 const RoutesList = ({routesBuses, routesMicrobuses}) => {
     const [selectedRoute, setSelectedRoute] = useState();
     const [loading, isLoading] = useState(true);
+   
 
     useEffect(() => {
         //aqui va route.route
         routeInfo("MB045A0_RECORRIDO.GeoJSON");
-
-        console.log('ruta seleccionada', selectedRoute);
+        
+        console.log('ruta seleccionada',selectedRoute );
     }, [])
 
+
+
     const listItemsBuses = routesBuses.map((route) =>
-        <li>{route.name}</li>
+        <li className="list">{route.name}</li>
     );
 
     const listItemsMicrobuses = routesMicrobuses.map((route) =>
-        <li>{route.name}</li>
+        <li className="list">{route.name}</li>
     );
 
     const routeInfo = (route) => {
@@ -41,13 +44,19 @@ const RoutesList = ({routesBuses, routesMicrobuses}) => {
     }
 
     return (
-        <div>
-            <h2>Autobuses</h2>
-            <ul>{listItemsBuses}</ul>
+        <div className="listab">
+            <div className="listaA">
 
-            <h2>Microbuses</h2>
-            <ul>{listItemsMicrobuses}</ul>
+            <h2 className="title">Autobuses</h2>
+            <ul className="scroll">{listItemsBuses}</ul>
+</div><div className="listaA">
+            <h2 className="title">Microbuses</h2>
+            <ul className="scroll">{listItemsMicrobuses}</ul>
         </div>
+       
+    
+        </div>
+ 
     );
 }
 

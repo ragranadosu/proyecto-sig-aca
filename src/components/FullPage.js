@@ -97,8 +97,8 @@ const FullPage = () => {
           '#bd1710',
           '#f0c222',
         ]}
-        slidesNavigation={true}
-        slidesNavPosition="bottom"
+        slidesNavigation={false}
+        
         autoScrolling={true}
         scrollHorizontally={true}
         navigation={false}
