@@ -49,7 +49,7 @@ const RoutesList = ({routesBuses, routesMicrobuses,rutas}) => {
 
 
 
-
+            <h3 className="title3">{selectedRoute ? null : "SELECIONE UNA RUTA EN EL BUSCADOR"}</h3>
 <div class="features">
     <div className="pareja2">
     <h2 className="title  title2">Nombre: </h2><h2 className="title">Ruta {selectedRoute ? selectedRoute.features[0].properties.NAME : null}</h2>
