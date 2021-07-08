@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {
     MapContainer,
     TileLayer,
@@ -32,10 +32,17 @@ const MapView = ({rutas, centerProp}) => {
     const [loading, isLoading] = useState(true);
     const [selectedRoute, setSelectedRoute] = useState(null);
     const [colors, setColors] = useState([]);
+    const [bounds, setBounds] = useState(null);
 
-    const MapUtil = () => {
+    const referenciaRuta = useRef();
+    const referenciaMapa = useRef();
+
+    const MapUtil = ({bounds}) => {
         const map = useMap();
-        console.log(map.getCenter());
+
+        if(bounds){
+            map.fitBounds(bounds);
+        }
 
         return null;
     }
@@ -43,7 +50,6 @@ const MapView = ({rutas, centerProp}) => {
     const MapEvents = () => {
         const map = useMapEvent({
             click: () => {
-                console.log(map.getCenter());
                 setSelectedRoute(null);
             }
         })
@@ -57,10 +63,7 @@ const MapView = ({rutas, centerProp}) => {
 
     useEffect(() => {
         var routes = rutas.length > 0 ? rutas : Routes.default;
-        console.log("rutas" ,rutas);
         const colorsArray = [];
-
-        //routes = utils.searchRoute("101");
 
         RoutesService.getRoutes(routes).then((response) => {
 
@@ -78,13 +81,25 @@ const MapView = ({rutas, centerProp}) => {
             isLoading(false);
         })
 
+        if(rutas.length == 1 && referenciaRuta.current != null){
+            console.log(referenciaMapa.current);
+        }
+
     }, [rutas]);
+
+    useEffect(() => {
+        setSelectedRoute(null);
+        if(referenciaRuta.current){
+            setBounds(referenciaRuta.current.getBounds());
+        }
+
+    },[routes])
 
     return (
         <div>
             {!loading ?
                 <MapContainer center={centerProp || (center)} zoom={13} scrollWheelZoom={false}>
-                    {/*<MapUtil/>*/}
+                    {<MapUtil bounds={bounds} />}
                     {<MapEvents/>}
                     <ZoomControl position="bottomleft"/>
                     <LayersControl position="bottomleft" collapsed={true}>
@@ -99,6 +114,7 @@ const MapView = ({rutas, centerProp}) => {
                             return (
                                 <LayersControl.Overlay checked name={`Ruta ${route.features[0].properties.NAME}`}>
                                     <GeoJSON
+                                        ref={routes.length == 1 ? referenciaRuta : null}
                                         eventHandlers={{
                                             click: () => {
                                                 setSelectedRoute(route.name);
