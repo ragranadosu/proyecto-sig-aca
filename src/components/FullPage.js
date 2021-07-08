@@ -76,7 +76,7 @@ const FullPage = () => {
   };
 
   return (
-    <div class="App">
+    <div >
       <Menu />
       <ReactFullpage
         debug /* Debug logging */
@@ -118,6 +118,7 @@ const FullPage = () => {
                       <div className="col-lg-6">
                         <div className="slider-content">
                           <h1 className="title">BusApp</h1>
+                 
                           <Search
                             handleSearch={handleSearch}
                             filteredRoute={searchQuery}
@@ -140,7 +141,7 @@ const FullPage = () => {
                   <MapView rutas={routeSelected}/>
                 </div>
                 <div className="slide">
-                    <RoutesLists routesBuses={data.buses} routesMicrobuses={data.microbuses}/>
+                    <RoutesLists routesBuses={data.buses} routesMicrobuses={data.microbuses} rutas={routeSelected}/>
                 </div>
               </div>
               <div className="section 3">

@@ -16,6 +16,7 @@
 	04. Footer
 
 -----------------------------------------------------------------------------------*/
+
 /*===========================
       01.COMMON css 
 ===========================*/
@@ -84,10 +85,10 @@ h6 {
   margin: 0px; }
 
 h1 {
-  font-size: 48px; }
+  font-size: 3rem; }
 
 h2 {
-  font-size: 36px; }
+  font-size: 34px; }
 
 h3 {
   font-size: 28px; }
@@ -171,24 +172,19 @@ ul {
 
 .listab{
   display: flex;
-  max-height: 70%;
-  justify-content: start;
-  padding-left:5%;
+  max-height: 100%;
+  justify-content: center;
+  max-width: 100%;
+
 
  
 }
 .listaA{
-  padding-left: 5%;
+ 
   max-height: 70%;
+  background-color: #7baabe;
 }
 
-.scroll{
- 
-  overflow-y: scroll;
-  max-height: 100%;
-  scrollbar-width: auto;          /* "auto" or "thin" */
-  scrollbar-color: #fec401 #70c8db;   /* scroll thumb and track */
-}
 
 
 
@@ -3334,3 +3330,72 @@ p.form-message.success, p.form-message.error {
     background-color: #0067f4; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+
+
+
+/* carta de la informacion de la ruta =========================================== */
+
+@import url(https://fonts.googleapis.com/css?family=Varela+Round);
+
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  
+  font-family: "Varela Round", sans-serif;
+}
+
+.card {
+ background-color:   #e5d5c7;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  border-radius: 5px;
+  margin: 50px 20px 20px 20px;
+  width: 33.3333% ; 
+  padding: 20px;
+  text-align: center;
+  color: white;
+  float: left;
+} @media (max-width: 767px) {
+  h2 {
+    font-size: 24px; }
+  .card {
+    margin: 10px 20px;
+    width: calc(100% - 40px); 
+    font-size: 26px;
+    } }
+
+.btn {
+  display: block;
+  background-color: darkcyan;
+  color: #fff;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+  box-shadow: rgba(0,0,0,0.9);
+  transition: all 200ms ease-in-out;
+  text-decoration: none;
+ 
+}
+.btn:hover {
+  background-color: burlywood;
+}
+
+.pareja{
+  display: flex;
+  justify-content: center;
+}
+
+.pareja2{
+  display: block;
+
+}
+
+.title2{
+  color: #006f6f;
+}

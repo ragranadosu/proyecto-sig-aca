@@ -10,19 +10,19 @@ import color from "randomcolor";
  * @constructor
  */
 
-const RoutesList = ({routesBuses, routesMicrobuses}) => {
-    const [selectedRoute, setSelectedRoute] = useState();
+const RoutesList = ({routesBuses, routesMicrobuses,rutas}) => {
+    const [selectedRoute, setSelectedRoute] = useState(null);
     const [loading, isLoading] = useState(true);
    
 
     useEffect(() => {
         //aqui va route.route
-        routeInfo("MB045A0_RECORRIDO.GeoJSON");
+        routeInfo(rutas);
         
         console.log('ruta seleccionada',selectedRoute );
-    }, [])
+    }, [rutas])
 
-
+  
 
     const listItemsBuses = routesBuses.map((route) =>
         <li className="list">{route.name}</li>
@@ -34,7 +34,7 @@ const RoutesList = ({routesBuses, routesMicrobuses}) => {
 
     const routeInfo = (route) => {
         isLoading(true);
-        RoutesService.getRoutes([route]).then((response) => {
+        RoutesService.getRoutes(route).then((response) => {
             setSelectedRoute(response[0]);
         }).catch((e) => {
             console.log(e, "No se han podido cargar las rutas");
@@ -42,18 +42,52 @@ const RoutesList = ({routesBuses, routesMicrobuses}) => {
             isLoading(false);
         })
     }
-
+  
     return (
         <div className="listab">
-            <div className="listaA">
+            <div class="card">
 
-            <h2 className="title">Autobuses</h2>
-            <ul className="scroll">{listItemsBuses}</ul>
-</div><div className="listaA">
-            <h2 className="title">Microbuses</h2>
-            <ul className="scroll">{listItemsMicrobuses}</ul>
-        </div>
-       
+
+
+
+<div class="features">
+    <div className="pareja2">
+    <h2 className="title  title2">Nombre: </h2><h2 className="title">Ruta {selectedRoute ? selectedRoute.features[0].properties.NAME : null}</h2>
+    </div>
+    <div className="pareja2">
+    <h2 className="title title2">Origen:</h2><h2 className="title">{selectedRoute ? selectedRoute.features[0].properties.ORIGEN : null}</h2>
+    </div>
+    <div className="pareja2">
+    <h2 className="title title2">Destino: </h2><h2 className="title">{selectedRoute ? selectedRoute.features[0].properties.DESTINO : null}</h2>
+    </div>
+    <div className="pareja2">
+    <h2 className="title title2">Kilometros: </h2><h2 className="title">{selectedRoute ? selectedRoute.features[0].properties.KILOMETROS : null}</h2>
+    </div>
+    <div className="pareja2">
+    <h2 className="title title2">Horario de lunes a viernes: </h2><h2 className="title">{selectedRoute ? selectedRoute.features[0].properties.H_INIC_LV : null}</h2>
+    <h2 className="title">{selectedRoute ? selectedRoute.features[0].properties.H_FIN_LV : null}</h2>
+
+    </div>
+    <div className="pareja2">
+    <h2 className="title title2">Horario de fin de semana: </h2><h2 className="title">{selectedRoute ? selectedRoute.features[0].properties.H_INIC_SD : null}</h2>
+<h2 className="title">{selectedRoute ? selectedRoute.features[0].properties.H_FIN_SD : null}</h2>
+    </div>
+    
+
+
+</div>
+
+<a href="#secondPage" class="btn">Ir al mapa</a>
+
+</div>
+
+
+
+
+
+
+          
+      
     
         </div>
  
