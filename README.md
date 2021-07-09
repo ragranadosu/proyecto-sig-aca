@@ -35,6 +35,13 @@ git clone https://github.com/ragranadosu/proyecto-sig-aca.git
 gh repo clone ragranadosu/proyecto-sig-aca
 ```
 
+## Inciar ejecución de proyecto
+
+#### Comando NPM
+```bash
+npm start
+```
+
 ## Construido con 🛠️
 
 * [React Js](https://es.reactjs.org/)
