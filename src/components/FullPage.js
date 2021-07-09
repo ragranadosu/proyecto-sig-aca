@@ -145,7 +145,17 @@ const FullPage = () => {
                 </div>
               </div>
               <div className="section 3">
-                <h1>Integrantes del grupo</h1>
+                <h1  className="title title2">Integrantes del grupo</h1>
+                <h1>Raul Antonio Granados Hernández  00138816
+
+
+
+</h1>
+<h1>David Alejandro Massana Zacatares 00072416 </h1>
+<h1>Carlos José Trigueros Rivas 00082217 </h1>
+<h1>Fernando José García Anaya 00051716</h1>
+<h1>Leandro Alexis Ayala Hernandez 00081211</h1>
+
               </div>
             </ReactFullpage.Wrapper>
           );
